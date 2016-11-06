@@ -1,388 +1,396 @@
 html {
-	background: url("../img/landscape-mountains-nature-clouds-downscale.jpg") no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+  background: url("../img/landscape-mountains-nature-clouds-downscale.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 body {
-	background: transparent;
-	/*
-	background-image: url("../img/RedMist.png");
-	background-attachment: fixed;
-	*/
+  background: transparent;
+  /*
+  background-image: url("../img/RedMist.png");
+  background-attachment: fixed;
+  */
 
 }
 #mainContainer {
-	/*
-	*/
+  /*
+  */
 }
 
 #game-window {
-	background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 
 #win-screen, #lose-screen {
-	position: fixed;
-	top: 0;
-	left: 0;
-	background: rgba(255, 255, 255, 0.9);
-	z-index: 5;
-	width: 100%;
-	height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 5;
+  width: 100%;
+  height: 100%;
 
-	/*display: flex;*/
-	align-items: center;
-	justify-content: center;
+  /*display: flex;*/
+  align-items: center;
+  justify-content: center;
 
-	display: none;
+  display: none;
 }
 
 #win-screen .container, #lose-screen .container {
-	border: 2px solid black;
-	border-radius: 10px;
-	padding: 0;
-	background-color: #fff;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 0;
+  background-color: #fff;
 
-	font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 .win-part, .lose-part {
-	padding-left: 10px;
-	padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #win-screen .buttons, #lose-screen .buttons {
-	text-align: right;
-	padding: 10px;
+  text-align: right;
+  padding: 10px;
 }
 
 .top-section {
-	padding: 0;
-	border-bottom: 2px solid black;
-	margin-bottom: 0.5em;
-	display: flex;
-	align-items: center;
-	justify-content: left;
-	flex-wrap: wrap;
-	padding-top: 1em;
-	padding-bottom: 1em;
-	padding-right: 1em;
+  padding: 0;
+  border-bottom: 2px solid black;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-wrap: wrap;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-right: 1em;
 }
 
 .top-section h3 {
-	font-size: 2.7em;
-	flex-grow: 1;
-	margin-top: 0;
-	margin-bottom: 0;
+  font-size: 2.7em;
+  flex-grow: 1;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #win-screen .top-section .icon, #lose-screen .top-section .icon {
-	font-size: 2.4em;
-	padding: 0 0.5em;
+  font-size: 2.4em;
+  padding: 0 0.5em;
 }
 
 .undobutton {
-	margin-left: .5em;
+  margin-left: .5em;
 }
 
 .failure-condition, .victory-condition {
-	/* HAX */
-	/*
-	padding-top: .5em;
-	padding-right: 1em;
-	*/
+  /* HAX */
+  /*
+  padding-top: .5em;
+  padding-right: 1em;
+  */
 }
 .victory-condition {
-	text-align: right;
+  text-align: right;
 }
 
 #win-screen h3, #lose-screen h3 {
-	font-family: 'Consolas', monospace;
+  font-family: 'Consolas', monospace;
 }
 
 #win-screen .container, #lose-screen .container {
-	/*margin-top: 20%;*/
+  /*margin-top: 20%;*/
 }
 
 #win-screen .icon, #lose-screen .icon {
-	font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 #win-screen .icon {
-	color: #0c0;
+  color: #0c0;
 }
 
 #lose-screen .icon {
-	color: #c00;
+  color: #c00;
 }
 
 #mainarea, .sources, .thread {
-/*	border: 1px solid black;*/
-	text-align: justify;
+/*  border: 1px solid black;*/
+  text-align: justify;
 }
 
 .thread {
-	float: left;
+  float: left;
 }
 
 .thread .code {
-	margin-top: 5px;
-	font-family: Consolas, monospace;
+  margin-top: 5px;
+  font-family: Consolas, monospace;
 }
 
 div.clearboth {
-	clear: both;
+  clear: both;
 }
 
 .instruction {
-	white-space: pre;
-	padding-left: 5px;
-	margin-right: 5px;
+  white-space: pre;
+  padding-left: 5px;
+  margin-right: 5px;
 }
 
 .instruction.current-instruction {
-	font-weight: bold;
-	background-color: #f3ff74;
+  font-weight: bold;
+  background-color: #f3ff74;
 }
 .mainMenuSolvedLevel {
     /*background-color: #95ff5a;*/
 }
 
 .global-state {
-	font-family: monospace;
-	margin-top: 1em;
-	margin-bottom: 1em;
+  font-family: monospace;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .global-state .type {
-	font-style: italic;
+  font-style: italic;
 }
 
 .global-state .name {
-	margin-left: .5em;
+  margin-left: .5em;
 }
 
 
 .global-state .equalSign {
-	margin-left: .5em;
-	margin-right: .5em;
+  margin-left: .5em;
+  margin-right: .5em;
 }
 
 .global-state .value {
-	/* margin-left: .5em; */
+  /* margin-left: .5em; */
 }
 
 .expansion {
-	background-color: white;
+  background-color: white;
 }
 .expansion .instruction {
-	margin-right: 0;
-	line-height: .96em;  /* .8em * 1.2 */
+  margin-right: 0;
+  line-height: .96em;  /* .8em * 1.2 */
 }
 .expansion .body {
-	font-size: .8em;
+  font-size: .8em;
 }
 div.instruction.current-instruction div.expansion {
-	font-weight: normal;
+  font-weight: normal;
 }
 .critical-section {
-	font-style: italic;
-	color: #00cc00;
+  font-style: italic;
+  color: #00cc00;
 }
 .failure-statement {
-	font-style: italic;
-	color: #00cc00;
+  font-style: italic;
+  color: #00cc00;
 }
 .game-over-instruction {
-	font-style: italic;
-	color: red;
+  font-style: italic;
+  color: red;
 }
 
 .global-buttons {
-	float: right;
-	margin-bottom: 1em;
-	margin-left: 1em;
+  float: right;
+  margin-bottom: 1em;
+  margin-left: 1em;
 }
 
 .sources {
-	clear: both;
+  clear: both;
 }
 
 .menu-completion-icon {
-	color: #afa;
-	float: left;
-	font-size: 3em;
+  color: #afa;
+  float: left;
+  font-size: 3em;
 }
 .menu-next-to-play-icon {
-	color: #E9BF4D;
-	float: left;
-	font-size: 3em;
+  color: #E9BF4D;
+  float: left;
+  font-size: 3em;
 }
 
 h2.menu-heading {
-	margin-top: 1.5em;
+  margin-top: 1.5em;
 }
 .menu-subheading {
-	 margin-bottom: 1em;
-	 font-size: large;
+   margin-bottom: 1em;
+   font-size: large;
  }
 
 .mainMenuLevel {
-	font-size: 1.3em;
-	padding: 1em;
-	padding-top: 1.5em;
-	padding-bottom: 1.5em;
-	border-bottom: 1px solid #ccc;
+  font-size: 1.3em;
+  padding: 1em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #ccc;
 }
 .mainMenuLevel.nextToPlay {
-	background-color: #FDF6E3;
+  background-color: #FDF6E3;
 }
 .mainMenuLevel.nextToPlay:hover {
-	background-color: #F6E7BD;
+  background-color: #F6E7BD;
 }
 .mainMenuLevel:hover {
-	background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 .mainMenuLevel.completed:hover {
-	background-color: #f5fff5;
+  background-color: #f5fff5;
 }
 .mainMenuLevel.completed {
-	/*color: #666;*/
+  /*color: #666;*/
 }
 .mainMenuLevelCaption {
-	font-weight: bold;
-	margin-left: 4em;
+  font-weight: bold;
+  margin-left: 4em;
 }
 
 .mainMenuLevelDescription {
-	/*clear: both;*/
-	margin-left: 4em;
+  /*clear: both;*/
+  margin-left: 4em;
 }
 
 #logo {
-	float: left;
+  float: left;
 }
 
 #logoRight {
-	float: right;
-	transform: scaleX(-1);
+  float: right;
+  transform: scaleX(-1);
 }
 h1#game {
-	padding-top: 0.4em;
-	padding-bottom: 0.1em;
-	font-size: 3.5em;
-	text-align: center;
-	font-family: 'Cabin', cursive; /* was: 'Amatic SC' */
+  padding-top: 0.4em;
+  padding-bottom: 0.1em;
+  font-size: 3.5em;
+  text-align: center;
+  font-family: 'Cabin', cursive; /* was: 'Amatic SC' */
 }
 #subtitle {
-	font-size: 2em;
-	text-align: center;
+  font-size: 2em;
+  text-align: center;
 
-	margin-top: -0.4em;
-	font-family: 'Cabin', cursive;
+  margin-top: -0.4em;
+  font-family: 'Cabin', cursive;
 }
 #introtext {
-	padding-top: 1.5em;
+  padding-top: 1.5em;
 }
 footer {
-	border-top: 1px dotted #666;
-	text-align: right;
-	margin-top: 1.5em;
-	padding-top: 1.5em;
-	color: #999;
-	display: flex;
+  border-top: 1px dotted #666;
+  text-align: right;
+  margin-top: 1.5em;
+  padding-top: 1.5em;
+  color: #999;
+  display: flex;
 }
 
 footer #credits {
-	flex-grow: 1;
+  flex-grow: 1;
 }
 
 #won-banner {
-	font-size: 1.5em;
+  font-size: 1.5em;
 }
 #won-banner span.glyphicon {
-	font-size: 1.2em;
-	color: #0c0;
+  font-size: 1.2em;
+  color: #0c0;
 }
 
 hr {
-	display: block;
-	height: 1px;
-	border: 0;
-	border-top: 1px solid #ccc;
-	margin: 1em 0;
-	padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 .tooltip code {
-	font-family: Consolas, monospace;
-	font-weight: bold;
-	font-size: 1.2em;
+  font-family: Consolas, monospace;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 /* Language keywords: while, if, true, etc. */
 .keyword {
-	color: #0000ff;
+  color: #0000ff;
 }
 .static {
-	color: #2b91af;
+  color: #2b91af;
 }
 .comment {
-	color: gray;
+  color: gray;
 }
 
 .tooltip code .keyword {
-	color: #268bd2;
+  color: #268bd2;
 }
 .tooltip code .static {
-	color: #228e87;
+  color: #228e87;
 }
 
 .block-reason {
-	height: 1.6em;
-	line-height: 1.6em;
+  height: 1.6em;
+  line-height: 1.6em;
 }
 code {
-	font-family: Consolas, monospace;
+  font-family: Consolas, monospace;
 
-	/* Counteract Bootstrap's <code> styling */
-	background-color: transparent;
-	padding: 0;
-	color: inherit;
+  /* Counteract Bootstrap's <code> styling */
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
 }
 .block-reason code {
-	background: transparent;
-	color: #000;
-	font-size: 1.2em;
+  background: transparent;
+  color: #000;
+  font-size: 1.2em;
 }
 h3.thread-header {
-	font-family: Consolas, monospace;
-	font-size: 1.4em;
+  font-family: Consolas, monospace;
+  font-size: 1.4em;
 }
 
 .tutorial-button-mock {
-	border: 1px solid #999;
-	border-radius: 4px;
-	padding: 1px 5px;
-	margin: 1px 0;
-	display: inline-block;
-	font-size: 0.9em;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin: 1px 0;
+  display: inline-block;
+  font-size: 0.9em;
 }
 
 a.msdn-link {
-	/* TODO: somehow style MSDN links */
+  /* TODO: somehow style MSDN links */
+}
+
+a.wikipedia-link {
+  /* TODO: somehow style wikipedia links */
+}
+
+a.docwiki-link {
+  /* TODO: somehow style embarcadero docwiki links */
 }
 
 .story-intro, .story-outro {
-	font-style: italic;
-	margin-bottom: 1em;
+  font-style: italic;
+  margin-bottom: 1em;
 }
 
 #game-window {
-	margin-top: 15px;
-	margin-bottom: 15px;
-	border: 2px solid #666;
-	border-radius: 8px;
-	padding: 1em;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 2px solid #666;
+  border-radius: 8px;
+  padding: 1em;
 }
