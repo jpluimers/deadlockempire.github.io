@@ -13,6 +13,10 @@ var keywordCode = function(keyword) {
     return spanTag("keyword", keyword);
 };
 
+var instructionCode = function(expression) {
+    return expression + ";";
+};
+
 function snakeCaseToCamelCase(string){
     return string.replace(/\_\w/g, // convert underscore followed by word-characters through the function
         function(match) {
@@ -118,6 +122,10 @@ var LanguageDependentEnd = function() {
     return keywordCode("end"); // Delphi
     return "}"; // C#
 }
+var LanguageDependentEndInstruction = function() {
+    return instructionCode(LanguageDependentEnd()); // Delphi needs a semicolon, C# has end-of-statement implicit
+    return LanguageDependentEnd(); // C#
+}
 
 var LanguageDependentEndElseBegin = function() {
     return LanguageDependentEnd() + " " + LanguageDependentElse() + " " + LanguageDependentBegin(); // C# or Delphi
@@ -169,8 +177,8 @@ var LanguageDependentLiteralExpression = function(value) {
 };
 
 var LanguageDependentDebugInstanceName = function() {
-    return debugInstanceName = ""; // Delphi
-    return debugInstanceName = "Debug"; // C#
+    return ""; // Delphi
+    return "Debug"; // C#
 }
 
 var LanguageDependentAndOperatorCode = function(left, right, separator) {
@@ -178,3 +186,54 @@ var LanguageDependentAndOperatorCode = function(left, right, separator) {
     return BinaryOperatorCode(ParenthesisedExpressionCode(left), ParenthesisedExpressionCode(right), LanguageDependentBooleanAndOperator(), separator); // Delphi
     return BinaryOperatorCode(left, right, LanguageDependentBooleanAndOperator(), separator); // C#
 };
+
+var LanguageDependentSemaphoreSlimWaitMethodName = function() {
+    return "WaitFor"; // Delphi
+    return "Wait"; // C#
+}
+
+var LanguageDependentManualResetEventSlimResetMethodName = function() {
+    return "ResetEvent"; // Delphi
+    return "Reset"; // C#
+}
+
+var LanguageDependentManualResetEventSlimSetMethodName = function() {
+    return "SetEvent"; // Delphi
+    return "Set"; // C#
+}
+
+var LanguageDependentManualResetEventSlimWaitMethodName = function() {
+    return "WaitFor"; // Delphi
+    return "Wait"; // C#
+}
+
+var LanguageDependentCountdownEventWaitMethodName = function() {
+    return "WaitFor"; // Delphi
+    return "Wait"; // C#
+}
+
+var LanguageDependentSemaphoreSlimWaitMethodName = function() {
+    return "WaitFor"; // Delphi
+    return "Wait"; // C#
+}
+
+var LanguageDependentSignalAndWaitMethodName = function() {
+    return "Wait"; // Delphi -> IThreadBarrier
+    return "SignalAndWait"; // C#
+}
+
+var LanguageDependentMonitorWaitMethodName = function() {
+    return "Wait"; // Delphi
+    return "Wait"; // C#
+}
+
+var LanguageDependentMonitorClassName = function() {
+    return "TMonitor"; // Delphi -> http://docwiki.embarcadero.com/Libraries/Berlin/en/System.TMonitor
+    // http://docwiki.embarcadero.com/Libraries/Berlin/en/System.TMonitor.Enter
+    // http://docwiki.embarcadero.com/Libraries/Berlin/en/System.TMonitor.Exit
+    // http://docwiki.embarcadero.com/Libraries/Berlin/en/System.TMonitor.Pulse
+    // http://docwiki.embarcadero.com/Libraries/Berlin/en/System.TMonitor.PulseAll
+    // http://docwiki.embarcadero.com/Libraries/Berlin/en/System.TMonitor.TryEnter
+    // http://docwiki.embarcadero.com/Libraries/Berlin/en/System.TMonitor.Wait
+    return "Monitor";
+}

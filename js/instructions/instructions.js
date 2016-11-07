@@ -33,10 +33,6 @@ var instanceMethodExpressionCode = function(instanceName, methodName, parameter,
     return expression + ParenthesisedExpressionCode(parameterValue);
 };
 
-var instructionCode = function(expression) {
-    return expression + ";";
-};
-
 var moveToNextInstruction = function(threadState) {
     if (threadState.expanded) {
         threadState.programCounter[1]++;
@@ -153,7 +149,7 @@ var IfInstruction = function(expression, name) {
 };
 
 var EndIfInstruction = function(name) {
-    this.code = instructionCode(LanguageDependentEnd());
+    this.code = LanguageDependentEndInstruction();
     this.tooltip = "This is the end of a simple \"if\" statement.";
     this.name = name;
     this.execute = function(threadState) {
@@ -193,7 +189,7 @@ var ElseInstruction = function(name) {
 };
 
 var EndIfLongInstruction = function(name) {
-    this.code = instructionCode(LanguageDependentEnd());
+    this.code = LanguageDependentEndInstruction();
     this.tooltip = "This is the end of a complex \"if\" statement.";
     this.name = name;
     this.execute = function(threadState) {
@@ -301,7 +297,7 @@ var createOuterWhileEnd = function() {
 };
 
 var EndWhileInstruction = function( name) {
-    this.code = instructionCode(LanguageDependentEnd());
+    this.code = LanguageDependentEndInstruction();
     this.tooltip = "Marks the end of a while loop.";
     this.name = name;
     this.execute = function(threadState, globalState, threadProgram) {

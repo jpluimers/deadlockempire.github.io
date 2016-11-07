@@ -1,6 +1,6 @@
 var ManualResetEventSet = function(name) {
-    this.code = instructionCode(instanceMethodExpressionCode(name, "Set"));
-    this.tooltip = "Atomic. Sets the state of the ManualResetEventSlim to \"signaled\" which causes its Wait() method to no longer be blocking.";
+    this.code = instructionCode(instanceMethodExpressionCode(name, LanguageDependentManualResetEventSlimSetMethodName()));
+    this.tooltip = "Atomic. Sets the state of the ManualResetEventSlim to \"signaled\" which causes its " + LanguageDependentManualResetEventSlimWaitMethodName() + "() method to no longer be blocking.";
     this.execute = function(threadState, globalState) {
         var mres = globalState[name];
         mres.value = true;
@@ -8,8 +8,8 @@ var ManualResetEventSet = function(name) {
     }
 };
 var ManualResetEventReset = function(name) {
-    this.code = instructionCode(instanceMethodExpressionCode(name, "Reset"));
-    this.tooltip = "Atomic. Sets the state of the ManualResetEventSlim to \"nonsignaled\" which causes its Wait() method to become blocking.";
+    this.code = instructionCode(instanceMethodExpressionCode(name, LanguageDependentManualResetEventSlimResetMethodName()));
+    this.tooltip = "Atomic. Sets the state of the ManualResetEventSlim to \"nonsignaled\" which causes its " + LanguageDependentManualResetEventSlimResetMethodName() + "() method to become blocking.";
     this.execute = function(threadState, globalState) {
         var mres = globalState[name];
         mres.value = false;
@@ -17,12 +17,12 @@ var ManualResetEventReset = function(name) {
     }
 };
 var ManualResetEventWait = function(name) {
-    this.code = instructionCode(instanceMethodExpressionCode(name, "Wait"));
+    this.code = instructionCode(instanceMethodExpressionCode(name, LanguageDependentManualResetEventSlimWaitMethodName()));
     this.tooltip = "Atomic. Blocks until the ManualResetEventSlim's state is set to 'signaled'.";
     this.isBlocking = function(threadState, globalState) {
         var mres = globalState[name];
         if (!mres.value) {
-            return "Waiting for signal (<code>" + LanguageDependentIdentifierCapitalisation(name) + ".Set()</code>)";
+            return "Waiting for signal (<code>" + LanguageDependentIdentifierCapitalisation(name) + "."+ LanguageDependentManualResetEventSlimSetMethodName () + "()</code>)";
         }
         return false;
     };
@@ -44,7 +44,7 @@ var CountdownEventSignal = function(name) {
     }
 };
 var CountdownEventWait = function(name) {
-    this.code = instructionCode(instanceMethodExpressionCode(name, "Wait"));
+    this.code = instructionCode(instanceMethodExpressionCode(name, LanguageDependentCountdownEventWaitMethodName()));
     this.tooltip = "Atomic. Blocks until the CountdownEvent's countdown timer reaches zero.";
     this.isBlocking = function(threadState, globalState) {
         var mres = globalState[name];
@@ -59,7 +59,7 @@ var CountdownEventWait = function(name) {
 };
 
 var BarrierSignalAndWait = function(name) {
-    this.code = instructionCode(instanceMethodExpressionCode(name, "SignalAndWait"));
+    this.code = instructionCode(instanceMethodExpressionCode(name, LanguageDependentSignalAndWaitMethodName()));
     this.tooltip = "Atomic! Blocks until all threads in arrive at the barrier, then enters a new phase - its counter is reset back to the initial number of participants.";
     this.isBlocking = function(threadState, globalState) {
         var barrier = globalState[name];

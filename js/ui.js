@@ -42,7 +42,13 @@ var updateGlobalVariables = function() {
         var representation = $('<div class="variable"></div>');
         representation.append($('<span class="name"></span>').text(variable.displayName));
         representation.append(": ");
-        representation.append($('<a href="https://msdn.microsoft.com/en-us/library/' + type.relativeUrl + '" class="type"></a>').text(type.displayName));
+        if (type.docwikiRelativeUrl) {
+            representation.append($('<a href="http://docwiki.embarcadero.com/Libraries/en/' + type.docwikiRelativeUrl + '" class="type"></a>').text(type.displayName));
+        } else if (type.otherUrl) {
+            representation.append($('<a href="' + type.otherUrl + '" class="type"></a>').text(type.displayName));
+        } else {
+            representation.append($('<a href="https://msdn.microsoft.com/en-us/library/' + type.msdnRelativeUrl + '" class="type"></a>').text(type.displayName)); // C#
+        }
 
         if (variableValue == "unimportant") {
             // intentionally left blank

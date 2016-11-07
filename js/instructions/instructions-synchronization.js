@@ -7,7 +7,7 @@ var staticMethodExpressionCode = function(className, methodName, parameters) {
 };
 
 var staticMonitorMethodExpressionCode = function(methodName, monitorName) {
-    return staticMethodExpressionCode("Monitor", methodName, LanguageDependentIdentifierCapitalisation(monitorName));
+    return staticMethodExpressionCode(LanguageDependentMonitorClassName(), methodName, LanguageDependentIdentifierCapitalisation(monitorName));
 };
 
 var MonitorEnterInstruction = function(monitorName) {
@@ -84,7 +84,7 @@ var MonitorExitInstruction = function(monitorName) {
     }
 };
 var SemaphoreTryWaitExpression = function(semaphoreName) {
-    this.code = instanceMethodExpressionCode(semaphoreName, "Wait", 500);
+    this.code = instanceMethodExpressionCode(semaphoreName, LanguageDependentSemaphoreSlimWaitMethodName(), 500);
     this.tooltip = "Blocks the thread until the semaphore has a positive value or the specified timeout elapses. In the first case, it decrements the semaphore and returns true. In the second case, it returns false.<br><br>In this game, you can always step through this expression. What happens will be determined by whether the semaphore currently has a positive value.";
     this.evaluate = function(threadState, globalState) {
         if (globalState[semaphoreName].value > 0) {
@@ -97,7 +97,7 @@ var SemaphoreTryWaitExpression = function(semaphoreName) {
     }
 };
 var SemaphoreWaitInstruction = function(semaphoreName) {
-    this.code = instructionCode(instanceMethodExpressionCode(semaphoreName, "Wait"));
+    this.code = instructionCode(instanceMethodExpressionCode(semaphoreName, LanguageDependentSemaphoreSlimWaitMethodName()));
     this.tooltip = "Atomic. Attempts to decrease the semaphore counter by one. If the semaphore is already at 0, this call blocks until another thread increases the counter by calling Release().";
     this.isBlocking = function (threadState, globalState) {
         if (globalState[semaphoreName].value > 0) {
@@ -131,7 +131,7 @@ var MinorWaitIntro = function(mutexName) {
     this.execute = function(threadState, globalState) {
         var mutex = globalState[mutexName];
         if (mutex.lockCount == 0 || mutex.lastLockedByThread != threadState.id) {
-            win("A SynchronizationLockException was thrown.<br>(thread called Wait while not having the lock)");
+            win("A SynchronizationLockException was thrown.<br>(thread called " + LanguageDependentMonitorWaitMethodName() + " while not having the lock)");
             return;
         }
         threadState.asleep = true;
@@ -185,7 +185,7 @@ var createMonitorWait = function(mutex) {
         new MinorAwaitWakeUp(mutex),
         new MinorInternalMonitorEnter(mutex)
     ];
-    var v = new ExpandableInstruction(staticMonitorMethodExpressionCode("Wait", mutex), minorInstructions);
+    var v = new ExpandableInstruction(staticMonitorMethodExpressionCode(LanguageDependentMonitorWaitMethodName(), mutex), minorInstructions);
     v.tooltip = "[Expandable] Releases the lock and puts the thread to sleep until it is woken up by a pulse.";
     return v;
 };
