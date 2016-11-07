@@ -192,6 +192,11 @@ var LanguageDependentSemaphoreSlimWaitMethodName = function() {
     return "Wait"; // C#
 }
 
+var LanguageDependentManualSetEventSlimWaitMethodName = function() {
+  return "SetEvent"; // Delphi
+  return "Set"; // C#
+}
+
 var LanguageDependentManualResetEventSlimResetMethodName = function() {
     return "ResetEvent"; // Delphi
     return "Reset"; // C#
